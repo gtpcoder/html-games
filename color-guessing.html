@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Guessing Game</title>
+</head>
+<style>
+    .colorDiv{
+        text-align: center;
+        width: 100;
+        height: 20;
+        border: 2px;
+    }
+    h1:hover { 
+        font-size : 220%
+    }
+    span {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: larger;
+        background-color: coral;
+    }
+</style>
+<body>
+    <div class="colorDiv" style="background-color: white;">
+        <h1>What color am I thinking of?</h1>
+        <audio id="rightGuess" >
+            <source src="audio/2-1-10001.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.</audio>
+        <span id="message" onclick="window.location.reload();"></span>
+        
+    </div>
+    <div class="colorDiv" onclick="runGame('red')" style="background-color: red;">
+        <h1>RED</h1>
+    </div>
+        <div class="colorDiv" onclick="runGame('blue')" style="background-color: blue;">
+        <h1>BLUE</h1>
+    </div>
+    <div class="colorDiv" onclick="runGame('green')" style="background-color: green;">
+        <h1>GREEN</h1>
+    </div>
+    <div class="colorDiv" onclick="runGame('yellow')" style="background-color: yellow;">
+        <h1>YELLOW</h1>
+    </div>
+    <div class="colorDiv" onclick="runGame('orange')" style="background-color:orange;">
+        <h1>ORANGE</h1>
+    </div>
+    <div class="colorDiv" onclick="runGame('indigo')" style="background-color:indigo;">
+        <h1>INDIGO</h1>
+    </div>
+    <div class="colorDiv" onclick="runGame('violet')" style="background-color: violet;">
+        <h1>VIOLET</h1>
+    </div>
+    
+    <script>
+        const COLOR_ARRAY = ["red","blue","green","yellow","orange","indigo","violet"];
+        const COLOR_INDEX = Math.floor(Math.random() * 7);
+        const COLOR_TARGET = COLOR_ARRAY[COLOR_INDEX];
+        function runGame(guess){
+            //alert(guess);
+            //alert(COLOR_INDEX);
+            //alert(COLOR_TARGET);
+            if (guess === COLOR_TARGET)
+            {
+                document.getElementById('message').innerHTML = "You are correct! Click here to restart.";
+                x = document.getElementById("rightGuess");
+                x.autoplay =true;
+                x.load();    
+            } else {
+                document.getElementById('message').innerHTML = "Sorry " + guess + " is not right, please try again!";
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <title>Color Guessing Game</title>
+</head>
+<style>
+    .colorDiv{
+        text-align: center;
+        width: 100;
+        height: 200;
+        border: 2px;
+    }
+    .ticTacDiv
+    {
+        text-align: center;
+        width: 80px;
+        height: 80px;
+        border: 2px;
+        background-color: lightgoldenrodyellow;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 60px;
+
+    }
+    h1:hover { 
+        font-size : 220%
+    }
+    span {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: larger;
+        background-color: coral;
+    }
+    table {
+        border-radius: 15px;
+        border-width: 5px;
+        border-style: double;
+
+    }
+    tbody+tr{
+        height: 250px;
+    }
+    td{
+        
+        border-radius: 15px;
+        border-width: 5px;
+        border-style:dotted;
+        
+
+    }
+    img {
+        height: 240px;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <th colspan="3"><h1>Match The Avenger</h1> </th>
+            <audio id="rightGuess">
+                <source src="audio/2-1-10001.mp3" type="audio/mpeg" >
+                Your browser does not support the audio element.</audio>
+            <span id="message" onclick="window.location.reload();"></span>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img id="arr0" src="image/avengers.png" onclick="runMatch(this.id);" alt="Avengers" /></td>
+                <td><img id="arr1" src="image/avengers.png" onclick="runMatch(this.id);" alt="Avengers" /></td>
+                <td><img id="arr2" src="image/avengers.png" onclick="runMatch(this.id);" alt="Avengers" /></td>
+            <td rowspan="2"><div class="colorDiv" style="background-color: white;">
+                <h1>What color am I thinking of?</h1>
+                
+                
+            </div>
+            <div class="colorDiv" onclick="runGame('red')" style="background-color: red;">
+                <h1>RED</h1>
+            </div>
+                <div class="colorDiv" onclick="runGame('blue')" style="background-color: blue;">
+                <h1>BLUE</h1>
+            </div>
+            <div class="colorDiv" onclick="runGame('green')" style="background-color: green;">
+                <h1>GREEN</h1>
+            </div>
+            <div class="colorDiv" onclick="runGame('yellow')" style="background-color: yellow;">
+                <h1>YELLOW</h1>
+            </div>
+            <div class="colorDiv" onclick="runGame('orange')" style="background-color:orange;">
+                <h1>ORANGE</h1>
+            </div>
+            <div class="colorDiv" onclick="runGame('indigo')" style="background-color:indigo;">
+                <h1>INDIGO</h1>
+            </div>
+            <div class="colorDiv" onclick="runGame('violet')" style="background-color: violet;">
+                <h1>VIOLET</h1>
+            </div>
+            </td>
+            <td rowspan="2">
+                <table>
+                    <tbody>
+                        <tr><td colspan="3">
+                            <div class="colorDiv" style="background-color: #fff5ee">
+                                <h1>Pick Your Sign</h1>
+                                Are you<input id="setUp1" type="radio" onchange="findMyMark('O');" name="ticOrTac">X or are you </button>
+                                <input id="setUp2" type="radio"  onchange="findMyMark('X');" name="ticOrTac">O</button>
+                                <br>
+                                <label for="playFirst">Do you want ME to make the first move?</label><input type="checkbox" name="playFirst" id="setUp3">
+                            </div>
+                        </td></tr>
+                        <tr>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac0">X</div></td>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac1">O</div></td>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac2"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac3"></div></td>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac4">X</div></td>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac5"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac6"></div></td>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac7"></div></td>
+                            <td><div class="ticTacDiv" onclick="playTicTacToe(this.id);" id="ticTac8">X</div></td>
+                        </tr>
+                        <tr><td colspan="3"><button id="startPlay" onclick="startTicTacToe(this)" style="font-size: xx-large; background-color: springgreen; align-content: center;">Start Playing!</button></td></tr>
+                        <tr><td>My Score: <label id="myScore"></label></td><td></td><td>Your Score: <label id="yourScore"></label></td></tr>
+                    </tbody>
+                </table>
+            </td>
+            </tr>
+            <tr><td><img id="arr3" src="image/avengers.png" onclick="runMatch(this.id);" alt="Avengers" /></td>
+                <td><img id="arr4" src="image/avengers.png" onclick="runMatch(this.id);" alt="Avengers" /></td>
+                <td><img id="arr5" src="image/avengers.png" onclick="runMatch(this.id);" alt="Avengers" /></td></tr>
+                
+        </tbody>
+    </table>
+    
+    
+    <script src="js/memory-games.js"> </script>
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+</body>
+</html>

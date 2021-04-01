@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matching Game</title>
+</head>
+<style>
+    img {
+        position : absolute;
+    }
+    div{
+        position: absolute;
+        width: 500px;
+        height: 500px;
+    }
+    #rightSide {
+        left: 500px;
+        border-left: 1px solid;
+    }
+
+</style>
+<body  onload="generateFaces()">
+    <h1>Get paid and get the extra $$!</h1>
+    <div id="leftSide"></div>
+    <div id="rightSide"></div>
+ <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore deleniti magnam aut sed facilis ducimus autem reprehenderit illo aliquam ex ad, quae ut debitis vitae dolorem? Molestias commodi voluptate dicta?</p>
+ <script>
+        let numberOfFaces = 5;
+        const theLeftSide = document.getElementById('leftSide');
+        const theRightSide = document.getElementById('rightSide');
+        //theLeftSide.lastChild.addEventListener("click", nextLevel)
+        document.body.addEventListener("click", gameOver);
+        function generateFaces(){
+            for (let i = 0; i < 5; i++){
+                console.log('creating an image');
+                let face = document.createElement('img');    
+                face.src = 'image/dollar.png';
+                let topPos = Math.floor(Math.random() * 400) + 1;
+                let leftPos= Math.floor(Math.random() * 400) + 1;
+                face.style.height = '40px';
+                face.style.top = topPos + 'px';
+                face.style.left = leftPos + 'px';
+                document.getElementById('leftSide').appendChild(face);
+            }
+            const leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.lastChild.remove();
+            theRightSide.appendChild(leftSideImages);
+            theLeftSide.lastChild.addEventListener("click", nextLevel);
+        }
+
+        function nextLevel() {
+            event.stopPropagation();
+            numberOfFaces += 5;
+            generateFaces();
+        }
+        function gameOver(){
+            alert("Game over, go cash out! You won " + theLeftSide.childElementCount + " dollars!");
+            document.body.removeEventListener("click", gameOver);
+            
+            theLeftSide.lastChild.removeEventListener("click", nextLevel);
+        }
+    </script>
+</body>
+</html>
